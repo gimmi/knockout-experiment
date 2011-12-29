@@ -21,7 +21,7 @@
 
 		<script type="text/html" id="node-template">
 			<li>
-				<span data-bind="css: { leaf: isLeaf, expanded: expanded }">#</span>
+				<span data-bind="css: { leaf: isLeaf, expanded: expanded }, click: toggleExpanded">#</span>
 				<span data-bind="text: text, click: click"></span>
 				<div data-bind="if: expanded">
 					<ul data-bind="template: { name: 'node-template', foreach: children }"></ul>

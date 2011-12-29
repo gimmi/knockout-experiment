@@ -26,7 +26,10 @@ trackr.TreeNodeViewModel = function(data) {
 };
 
 trackr.TreeNodeViewModel.prototype = {
-	click: function() {
+	toggleExpanded: function () {
 		this.expanded(!this.expanded());
+	},
+	click: function () {
+		console.log('click ' + this.text());
 	}
 };
