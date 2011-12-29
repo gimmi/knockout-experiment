@@ -1,5 +1,5 @@
 /*
-JsonRpcJs version 0.1.0
+JsonRpcJs version 0.1.3
 
 http://github.com/gimmi/jsonrpcjs/
 

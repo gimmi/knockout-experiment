@@ -5,7 +5,7 @@ namespace Trackr
 {
 	public partial class Default : Page
 	{
-		public string AppPath
+		public string RpcUrl
 		{
 			get
 			{

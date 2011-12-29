@@ -10,7 +10,8 @@ namespace Trackr
 		protected void Application_Start(object sender, EventArgs e)
 		{
 			LambdaRpcConfiguration cfg = new LambdaRpcConfiguration()
-				.Register<Service>("echo", x => x.Echo(null));
+				.Register<Service>("echo", x => x.Echo(null))
+				.Register<Service>("getTree", x => x.GetTree());
 			JsonRpcHttpHandler.SetConfiguration(cfg);
 		}
 

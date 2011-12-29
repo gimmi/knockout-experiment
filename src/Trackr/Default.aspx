@@ -2,14 +2,27 @@
 <html>
 	<head>
 		<title>Trackr</title>
-		<script type="text/javascript" src="jsonrpc-0.1.0/jsonrpc.js"> </script>
-		<script type="text/javascript" src="knockout-2.0.0.debug.js"> </script>
+		<script type="text/javascript" src="lib/underscore.js" > </script>
+		<script type="text/javascript" src="lib/jquery-1.7.1.js"> </script>
+		<script type="text/javascript" src="lib/jsonrpc-0.1.3.js"> </script>
+		<script type="text/javascript" src="lib/knockout-2.0.0.debug.js"> </script>
+		<script type="text/javascript" src="js/app.js"> </script>
 		<script type="text/javascript">
-			var server = new JsonRpc('<%= AppPath %>');
-			server.call('echo', 'Hello', function (ret) {
-				console.log(ret);
+			$(function() {
+				var server = new JsonRpc('<%= RpcUrl %>');
+				ko.applyBindings(new trackr.AppController(server));
 			});
 		</script>
 	</head>
-	<body></body>
+	<body>
+		<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+		
+		<script type="text/html" id="node-template">
+			<li>
+				<span data-bind="text: text"></span>
+				<ul data-bind="template: { name: 'node-template', foreach: children }">
+				</ul>
+			</li>
+		</script>
+	</body>
 </html>

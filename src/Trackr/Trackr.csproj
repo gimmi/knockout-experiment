@@ -50,10 +50,11 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="jsonrpc-0.1.0\jsonrpc.js" />
-    <Content Include="jsonrpc-0.1.0\jsonrpc.min.js" />
-    <Content Include="knockout-2.0.0.debug.js" />
-    <Content Include="knockout-2.0.0.js" />
+    <Content Include="js\app.js" />
+    <Content Include="lib\jquery-1.7.1.js" />
+    <Content Include="lib\jsonrpc-0.1.3.js" />
+    <Content Include="lib\knockout-2.0.0.debug.js" />
+    <Content Include="lib\underscore.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
