@@ -15,13 +15,16 @@
 		</script>
 	</head>
 	<body>
-		<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
-		
+		<div>
+			<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+		</div>
+
 		<script type="text/html" id="node-template">
 			<li>
-				<span data-bind="text: text"></span>
-				<ul data-bind="template: { name: 'node-template', foreach: children }">
-				</ul>
+				<span data-bind="text: text, click: click"></span>
+				<div data-bind="if: expanded">
+					<ul data-bind="template: { name: 'node-template', foreach: children }"></ul>
+				</div>
 			</li>
 		</script>
 	</body>

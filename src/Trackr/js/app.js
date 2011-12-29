@@ -20,9 +20,13 @@ trackr.AppController.prototype = {
 
 trackr.TreeNodeViewModel = function (data) {
 	this.text = ko.observable(data.text);
+	this.expanded = ko.observable(false);
 	this.children = ko.observableArray(_(data.children).map(function (child) {
 		return new trackr.TreeNodeViewModel(child);
 	}));
 };
 trackr.TreeNodeViewModel.prototype = {
+	click: function () {
+		this.expanded(!this.expanded());
+	}
 };
