@@ -12,7 +12,8 @@
 			$(function () {
 				window.Server = new JsonRpc('<%= RpcUrl %>');
 				window.On = {
-					nodeSelected: new signals.Signal()
+					nodeSelected: new signals.Signal(),
+					taskSelected: new signals.Signal()
 				};
 				ko.applyBindings(new trackr.AppController());
 			});
@@ -36,7 +37,7 @@
 
 		<script type="text/html" id="task-template">
 			<li class="task">
-				<span data-bind="text: title"></span>
+				<span data-bind="text: title, click: click"></span>
 			</li>
 		</script>
 	</body>

@@ -5,6 +5,7 @@ trackr.AppController = function() {
 	this.tasks = ko.observableArray();
 
 	window.On.nodeSelected.add(this.onNodeSelected, this);
+	window.On.taskSelected.add(this.onTaskSelected, this);
 
 	this.loadTree();
 };
@@ -17,12 +18,17 @@ trackr.AppController.prototype = {
 			}, this));
 		}, this);
 	},
+
 	onNodeSelected: function (text) {
 		window.Server.call('getTasks', text, function (datas) {
 			this.tasks(_(datas).map(function (data) {
 				return new trackr.TaskViewModel(data);
 			}, this));
 		}, this);
+	},
+
+	onTaskSelected: function (id) {
+		console.log('Task selected: ' + id);
 	}
 };
 
@@ -47,4 +53,7 @@ trackr.TaskViewModel = function(data) {
 };
 
 trackr.TaskViewModel.prototype = {
+	click: function () {
+		window.On.taskSelected.dispatch(this.title());
+	}
 };
