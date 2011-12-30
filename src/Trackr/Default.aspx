@@ -10,12 +10,7 @@
 		<script type="text/javascript" src="js/app.js"> </script>
 		<script type="text/javascript">
 			$(function () {
-				window.Server = new JsonRpc('<%= RpcUrl %>');
-				window.On = {
-					nodeSelected: new signals.Signal(),
-					taskSelected: new signals.Signal()
-				};
-				ko.applyBindings(new trackr.AppController());
+				trackr.main('<%= RpcUrl %>');
 			});
 		</script>
 	</head>

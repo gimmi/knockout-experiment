@@ -1,18 +1,27 @@
-trackr = { };
+trackr = {
+	on: {
+		nodeSelected: new signals.Signal(),
+		taskSelected: new signals.Signal()
+	},
+	main: function (rpcUrl) {
+		this.server = new JsonRpc(rpcUrl);
+		ko.applyBindings(new trackr.AppController());
+	}
+};
 
 trackr.AppController = function() {
 	this.nodes = ko.observableArray();
 	this.tasks = ko.observableArray();
 
-	window.On.nodeSelected.add(this.onNodeSelected, this);
-	window.On.taskSelected.add(this.onTaskSelected, this);
+	trackr.on.nodeSelected.add(this.onNodeSelected, this);
+	trackr.on.taskSelected.add(this.onTaskSelected, this);
 
 	this.loadTree();
 };
 
 trackr.AppController.prototype = {
 	loadTree: function () {
-		window.Server.call('getTree', function (datas) {
+		trackr.server.call('getTree', function (datas) {
 			this.nodes(_(datas).map(function (data) {
 				return new trackr.TreeNodeViewModel(data);
 			}, this));
@@ -20,7 +29,7 @@ trackr.AppController.prototype = {
 	},
 
 	onNodeSelected: function (text) {
-		window.Server.call('getTasks', text, function (datas) {
+		trackr.server.call('getTasks', text, function (datas) {
 			this.tasks(_(datas).map(function (data) {
 				return new trackr.TaskViewModel(data);
 			}, this));
@@ -44,7 +53,7 @@ trackr.TreeNodeViewModel.prototype = {
 		this.expanded(!this.expanded());
 	},
 	click: function() {
-		window.On.nodeSelected.dispatch(this.text());
+		trackr.on.nodeSelected.dispatch(this.text());
 	}
 };
 
@@ -54,6 +63,6 @@ trackr.TaskViewModel = function(data) {
 
 trackr.TaskViewModel.prototype = {
 	click: function () {
-		window.On.taskSelected.dispatch(this.title());
+		trackr.on.taskSelected.dispatch(this.title());
 	}
 };
