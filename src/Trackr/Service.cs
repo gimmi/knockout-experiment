@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Trackr
 {
@@ -9,13 +10,14 @@ namespace Trackr
 			return v;
 		}
 
-		public Task[] GetTasks(string text)
+		public IEnumerable<TaskSummary> GetTaskSummaries(string text)
 		{
-			return new[] {
-				new Task { Title = text + ", task 1" },
-				new Task { Title = text + ", task 2" },
-				new Task { Title = text + ", task 3" }
-			};
+			var tasks = new List<TaskSummary>();
+			for(int i = 0; i < 100; i++)
+			{
+				tasks.Add(new TaskSummary { Number = i, Title = text + ", task " + i });
+			}
+			return tasks;
 		}
 
 		public TreeNode[] GetTree()
@@ -57,8 +59,10 @@ namespace Trackr
 			};
 		}
 
-		public class Task
+		public class TaskSummary
 		{
+			public Guid Id = Guid.NewGuid();
+			public int Number;
 			public string Title;
 		}
 

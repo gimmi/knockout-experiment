@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="lib/signals.js"> </script>
 		<script type="text/javascript" src="js/app.js"> </script>
 		<script type="text/javascript" src="js/AppController.js"> </script>
-		<script type="text/javascript" src="js/TaskViewModel.js"> </script>
+		<script type="text/javascript" src="js/TaskSummaryViewModel.js"> </script>
 		<script type="text/javascript" src="js/TreeNodeViewModel.js"> </script>
 		<script type="text/javascript">
 			$(function () {
@@ -34,8 +34,9 @@
 		</script>
 
 		<script type="text/html" id="task-template">
-			<li class="task">
-				<span data-bind="text: title, click: click"></span>
+			<li class="task" data-bind="click: click">
+				<span data-bind="text: number"></span>
+				<span data-bind="text: title"></span>
 			</li>
 		</script>
 	</body>

@@ -11,7 +11,7 @@ namespace Trackr
 		{
 			LambdaRpcConfiguration cfg = new LambdaRpcConfiguration()
 				.Register<Service>("echo", x => x.Echo(null))
-				.Register<Service>("getTasks", x => x.GetTasks(null))
+				.Register<Service>("getTaskSummaries", x => x.GetTaskSummaries(null))
 				.Register<Service>("getTree", x => x.GetTree());
 			JsonRpcHttpHandler.SetConfiguration(cfg);
 		}
