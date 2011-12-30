@@ -38,6 +38,9 @@
 			<li class="task" data-bind="click: click">
 				<span data-bind="text: number"></span>
 				<span data-bind="text: title"></span>
+				<div data-bind="if: detail">
+					lalala
+				</div>
 			</li>
 		</script>
 	</body>

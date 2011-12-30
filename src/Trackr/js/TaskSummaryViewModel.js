@@ -9,9 +9,12 @@ trackr.TaskSummaryViewModel = function (data) {
 
 trackr.TaskSummaryViewModel.prototype = {
 	click: function () {
+		if (this.detail()) {
+			this.detail(null);
+			return;
+		}
 		trackr.server.call('getTaskDetail', this.id(), function (data) {
 			this.detail(new trackr.TaskDetailViewModel(data));
-			console.log(this.detail().title());
 		}, this);
 	}
 };
