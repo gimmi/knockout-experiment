@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="js/TaskDetailViewModel.js"> </script>
 		<script type="text/javascript" src="js/TreeNodeViewModel.js"> </script>
 		<script type="text/javascript">
-			$(function () {
+			$(function() {
 				trackr.main('<%= RpcUrl %>');
 			});
 		</script>
@@ -35,11 +35,15 @@
 		</script>
 
 		<script type="text/html" id="task-template">
-			<li class="task" data-bind="click: click">
-				<span data-bind="text: number"></span>
-				<span data-bind="text: title"></span>
-				<div data-bind="if: detail">
-					lalala
+			<li class="task">
+				<div class="tasksummary" data-bind="click: click">
+					<span data-bind="text: number"></span>
+					<span data-bind="text: title"></span>
+				</div>
+				<div class="taskdetail" data-bind="with: detail">
+					<span data-bind="text: number"></span>
+					<span data-bind="text: title"></span>
+					<div data-bind="text: description"></div>
 				</div>
 			</li>
 		</script>

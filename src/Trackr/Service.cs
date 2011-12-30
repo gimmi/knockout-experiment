@@ -25,7 +25,8 @@ namespace Trackr
 			return new TaskDetail {
 				Id = id,
 				Number = 1,
-				Title = "Task " + id
+				Title = "Task " + id,
+				Description = "Task " + id + " description"
 			};
 		}
 
@@ -80,6 +81,7 @@ namespace Trackr
 			public Guid Id = Guid.NewGuid();
 			public int Number;
 			public string Title;
+			public string Description;
 		}
 
 		public class TreeNode
