@@ -54,6 +54,8 @@
     <Content Include="lib\jquery-1.7.1.js" />
     <Content Include="lib\jsonrpc-0.1.3.js" />
     <Content Include="lib\knockout-2.0.0.debug.js" />
+    <Content Include="lib\signals.js" />
+    <Content Include="lib\signals.min.js" />
     <Content Include="lib\underscore.js" />
     <Content Include="Web.config" />
   </ItemGroup>

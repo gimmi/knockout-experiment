@@ -9,6 +9,15 @@ namespace Trackr
 			return v;
 		}
 
+		public Task[] GetTasks(string text)
+		{
+			return new[] {
+				new Task { Title = text + ", task 1" },
+				new Task { Title = text + ", task 2" },
+				new Task { Title = text + ", task 3" }
+			};
+		}
+
 		public TreeNode[] GetTree()
 		{
 			return new[] {
@@ -46,6 +55,11 @@ namespace Trackr
 					}
 				}
 			};
+		}
+
+		public class Task
+		{
+			public string Title;
 		}
 
 		public class TreeNode

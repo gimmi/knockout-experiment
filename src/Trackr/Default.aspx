@@ -6,17 +6,24 @@
 		<script type="text/javascript" src="lib/jquery-1.7.1.js"> </script>
 		<script type="text/javascript" src="lib/jsonrpc-0.1.3.js"> </script>
 		<script type="text/javascript" src="lib/knockout-2.0.0.debug.js"> </script>
+		<script type="text/javascript" src="lib/signals.js"> </script>
 		<script type="text/javascript" src="js/app.js"> </script>
 		<script type="text/javascript">
-			$(function() {
-				var server = new JsonRpc('<%= RpcUrl %>');
-				ko.applyBindings(new trackr.AppController(server));
+			$(function () {
+				window.Server = new JsonRpc('<%= RpcUrl %>');
+				window.On = {
+					nodeSelected: new signals.Signal()
+				};
+				ko.applyBindings(new trackr.AppController());
 			});
 		</script>
 	</head>
 	<body>
 		<div>
 			<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+		</div>
+		<div>
+			<ul data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
 		</div>
 
 		<script type="text/html" id="node-template">
@@ -26,6 +33,12 @@
 				<div data-bind="if: expanded">
 					<ul data-bind="template: { name: 'node-template', foreach: children }"></ul>
 				</div>
+			</li>
+		</script>
+
+		<script type="text/html" id="task-template">
+			<li>
+				<span data-bind="text: title"></span>
 			</li>
 		</script>
 	</body>
