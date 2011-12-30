@@ -18,16 +18,14 @@
 			});
 		</script>
 	</head>
-	<body>
-		<div>
+	<body class="trackr">
+		<div class="nodes">
 			<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 		</div>
-		<div>
-			<ul data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
-		</div>
+		<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
 
 		<script type="text/html" id="node-template">
-			<li>
+			<li class="node">
 				<span data-bind="css: { leaf: isLeaf, expanded: expanded }, click: toggleExpanded">#</span>
 				<span data-bind="text: text, click: click"></span>
 				<div data-bind="if: expanded">
@@ -37,7 +35,7 @@
 		</script>
 
 		<script type="text/html" id="task-template">
-			<li>
+			<li class="task">
 				<span data-bind="text: title"></span>
 			</li>
 		</script>
