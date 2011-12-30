@@ -5,7 +5,6 @@ trackr.AppController = function () {
 	this.tasks = ko.observableArray();
 
 	trackr.on.nodeSelected.add(this.onNodeSelected, this);
-	trackr.on.taskSelected.add(this.onTaskSelected, this);
 
 	this.loadTree();
 };
@@ -25,9 +24,5 @@ trackr.AppController.prototype = {
 				return new trackr.TaskSummaryViewModel(data);
 			}, this));
 		}, this);
-	},
-
-	onTaskSelected: function (id) {
-		console.log('Task selected: ' + id);
 	}
 };

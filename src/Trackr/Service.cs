@@ -20,6 +20,15 @@ namespace Trackr
 			return tasks;
 		}
 
+		public TaskDetail GetTaskDetail(Guid id)
+		{
+			return new TaskDetail {
+				Id = id,
+				Number = 1,
+				Title = "Task " + id
+			};
+		}
+
 		public TreeNode[] GetTree()
 		{
 			return new[] {
@@ -60,6 +69,13 @@ namespace Trackr
 		}
 
 		public class TaskSummary
+		{
+			public Guid Id = Guid.NewGuid();
+			public int Number;
+			public string Title;
+		}
+
+		public class TaskDetail
 		{
 			public Guid Id = Guid.NewGuid();
 			public int Number;

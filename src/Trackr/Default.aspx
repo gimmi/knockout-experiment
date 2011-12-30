@@ -10,6 +10,7 @@
 		<script type="text/javascript" src="js/app.js"> </script>
 		<script type="text/javascript" src="js/AppController.js"> </script>
 		<script type="text/javascript" src="js/TaskSummaryViewModel.js"> </script>
+		<script type="text/javascript" src="js/TaskDetailViewModel.js"> </script>
 		<script type="text/javascript" src="js/TreeNodeViewModel.js"> </script>
 		<script type="text/javascript">
 			$(function () {

@@ -52,6 +52,7 @@
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
     <Content Include="js\AppController.js" />
+    <Content Include="js\TaskDetailViewModel.js" />
     <Content Include="js\TaskSummaryViewModel.js" />
     <Content Include="js\TreeNodeViewModel.js" />
     <Content Include="lib\jquery-1.7.1.js" />

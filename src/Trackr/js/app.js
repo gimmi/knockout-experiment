@@ -1,8 +1,7 @@
 trackr = window['trackr'] || {};
 
 trackr.on = {
-	nodeSelected: new signals.Signal(),
-	taskSelected: new signals.Signal()
+	nodeSelected: new signals.Signal()
 };
 
 trackr.main = function(rpcUrl) {
