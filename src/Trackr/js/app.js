@@ -18,11 +18,10 @@ trackr.AppController.prototype = {
 		}, this);
 	},
 	onNodeSelected: function (text) {
-		this.tasks.removeAll();
 		window.Server.call('getTasks', text, function (datas) {
-			_(datas).each(function (data) {
-				this.tasks.push(new trackr.TaskViewModel(data));
-			}, this);
+			this.tasks(_(datas).map(function (data) {
+				return new trackr.TaskViewModel(data);
+			}, this));
 		}, this);
 	}
 };
