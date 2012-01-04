@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<title>Trackr</title>
+		<link type="text/css" rel="stylesheet" href="css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="css/style.css" />
 		<script type="text/javascript" src="lib/underscore.js" > </script>
 		<script type="text/javascript" src="lib/jquery-1.7.1.js"> </script>
 		<script type="text/javascript" src="lib/jsonrpc-0.1.3.js"> </script>
@@ -18,18 +20,24 @@
 			});
 		</script>
 	</head>
-	<body class="trackr">
-		<div class="nodes">
-			<ul data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+	<body>
+		<div id="wrapper">
+			<div id="top"></div>
+			<div id="left">
+				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+			</div>
+			<div id="middle">
+				<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
+			</div>
+			<div id="bottom"></div>
 		</div>
-		<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
 
 		<script type="text/html" id="node-template">
 			<li class="node">
 				<span data-bind="css: { leaf: isLeaf, expanded: expanded }, click: toggleExpanded">#</span>
 				<span data-bind="text: text, click: click"></span>
 				<div data-bind="if: expanded">
-					<ul data-bind="template: { name: 'node-template', foreach: children }"></ul>
+					<ul class="nodes" data-bind="template: { name: 'node-template', foreach: children }"></ul>
 				</div>
 			</li>
 		</script>

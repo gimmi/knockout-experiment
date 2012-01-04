@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\style.css" />
+    <Content Include="css\reset.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
