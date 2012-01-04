@@ -6,9 +6,10 @@ body {
 	height: 100%;
 }
 
-#wrapper { height: 100%; }
-
-#wrapper { position: relative; }
+#main {
+	 position: relative;
+	 height: 100%;
+}
 
 #top {
 	background: lightgray;
@@ -17,14 +18,22 @@ body {
 	width: 100%;
 }
 
-#left {
+#nodes {
 	background: red;
 	bottom: 50px;
 	color: white;
-	overflow: auto;
 	position: absolute;
 	top: 50px;
 	width: 100px;
+	overflow: auto;
+}
+
+.node {
+	white-space: nowrap; 
+}
+
+.nodes .nodes {
+	padding-left: 10px;
 }
 
 #middle {

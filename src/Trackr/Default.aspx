@@ -21,9 +21,9 @@
 		</script>
 	</head>
 	<body>
-		<div id="wrapper">
+		<div id="main">
 			<div id="top"></div>
-			<div id="left">
+			<div id="nodes">
 				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 			</div>
 			<div id="middle">
