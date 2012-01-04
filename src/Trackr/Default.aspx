@@ -26,6 +26,7 @@
 			<div id="nodes">
 				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 			</div>
+			<div id="split"></div>
 			<div id="middle">
 				<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
 			</div>
