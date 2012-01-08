@@ -17,7 +17,7 @@
 		<script type="text/javascript" src="js/BottomScrollBinding.js"> </script>
 		<script type="text/javascript">
 			$(function () {
-				trackr.main('<%= RpcUrl %>');
+				trackr.main('rpc');
 			});
 		</script>
 	</head>
