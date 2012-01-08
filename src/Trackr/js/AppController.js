@@ -1,8 +1,9 @@
-trackr = window['trackr'] || {};
+trackr = window['trackr'] || { };
 
-trackr.AppController = function () {
+trackr.AppController = function() {
 	this.nodes = ko.observableArray();
 	this.tasks = ko.observableArray();
+	this._nodeId = null;
 
 	trackr.on.nodeSelected.add(this.onNodeSelected, this);
 
@@ -10,23 +11,30 @@ trackr.AppController = function () {
 };
 
 trackr.AppController.prototype = {
-	loadTree: function () {
-		trackr.server.call('getTree', function (datas) {
-			this.nodes(_(datas).map(function (data) {
+	loadTree: function() {
+		trackr.server.call('getTree', function(datas) {
+			this.nodes(_(datas).map(function(data) {
 				return new trackr.TreeNodeViewModel(data);
 			}, this));
 		}, this);
 	},
 
-	onNodeSelected: function (text) {
-		trackr.server.call('getTaskSummaries', 0, 50, text, function (datas) {
-			this.tasks(_(datas).map(function (data) {
-				return new trackr.TaskSummaryViewModel(data);
-			}, this));
+	onNodeSelected: function(text) {
+		this._nodeId = text;
+		this.getTaskSummaries(0, function(ret) { this.tasks(ret); }, this);
+	},
+
+	loadNextPage: function() {
+		this.getTaskSummaries(this.tasks().length, function(tasks) {
+			_(tasks).each(function(task) { this.tasks.push(task); }, this);
 		}, this);
 	},
 
-	loadNextPage: function () {
-		console.log('haha');
+	getTaskSummaries: function(skip, fn, scope) {
+		trackr.server.call('getTaskSummaries', skip, 50, this._nodeId, function (datas) {
+			fn.call(scope, _(datas).map(function(data) {
+				return new trackr.TaskSummaryViewModel(data);
+			}, this));
+		}, this);
 	}
 };
