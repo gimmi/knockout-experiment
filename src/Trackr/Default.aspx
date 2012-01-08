@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<div id="main">
-			<div id="top"></div>
+			<div id="top">Header</div>
 			<div id="nodes">
 				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 			</div>
@@ -47,10 +47,12 @@
 					<span data-bind="text: number"></span>
 					<span data-bind="text: title"></span>
 				</div>
-				<div class="taskdetail" data-bind="with: detail">
-					<span data-bind="text: number"></span>
-					<span data-bind="text: title"></span>
-					<div data-bind="text: description"></div>
+				<div data-bind="with: detail">
+					<div class="taskdetail">
+						<span data-bind="text: number"></span>
+						<span data-bind="text: title"></span>
+						<div data-bind="text: description"></div>
+					</div>
 				</div>
 			</li>
 		</script>
