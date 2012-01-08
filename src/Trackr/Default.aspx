@@ -15,7 +15,14 @@
 		<script type="text/javascript" src="js/TaskDetailViewModel.js"> </script>
 		<script type="text/javascript" src="js/TreeNodeViewModel.js"> </script>
 		<script type="text/javascript">
-			$(function() {
+			$(function () {
+				$('#tasks').scroll(function () {
+					var tasks = $(this),
+					    children = tasks.children();
+					if(tasks.height() + tasks.scrollTop() >= children.height()) {
+						console.log('bottom!');
+					}
+				});
 				trackr.main('<%= RpcUrl %>');
 			});
 		</script>
@@ -26,7 +33,7 @@
 			<div id="nodes">
 				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 			</div>
-			<div id="middle">
+			<div id="tasks">
 				<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
 			</div>
 		</div>
