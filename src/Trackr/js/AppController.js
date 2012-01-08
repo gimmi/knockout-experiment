@@ -19,7 +19,7 @@ trackr.AppController.prototype = {
 	},
 
 	onNodeSelected: function (text) {
-		trackr.server.call('getTaskSummaries', text, function (datas) {
+		trackr.server.call('getTaskSummaries', 0, 50, text, function (datas) {
 			this.tasks(_(datas).map(function (data) {
 				return new trackr.TaskSummaryViewModel(data);
 			}, this));

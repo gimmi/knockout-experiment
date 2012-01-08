@@ -10,10 +10,10 @@ namespace Trackr
 			return v;
 		}
 
-		public IEnumerable<TaskSummary> GetTaskSummaries(string text)
+		public IEnumerable<TaskSummary> GetTaskPage(int start, int limit, string text)
 		{
 			var tasks = new List<TaskSummary>();
-			for(int i = 0; i < 100; i++)
+			for (int i = start; i < start + limit; i++)
 			{
 				tasks.Add(new TaskSummary { Number = i, Title = text + ", task " + i });
 			}
