@@ -24,5 +24,9 @@ trackr.AppController.prototype = {
 				return new trackr.TaskSummaryViewModel(data);
 			}, this));
 		}, this);
+	},
+
+	loadNextPage: function () {
+		console.log('haha');
 	}
 };

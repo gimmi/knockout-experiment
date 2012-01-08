@@ -54,6 +54,7 @@
     <Content Include="Global.asax" />
     <Content Include="js\app.js" />
     <Content Include="js\AppController.js" />
+    <Content Include="js\BottomScrollBinding.js" />
     <Content Include="js\TaskDetailViewModel.js" />
     <Content Include="js\TaskSummaryViewModel.js" />
     <Content Include="js\TreeNodeViewModel.js" />
