@@ -9,15 +9,12 @@
 		<script type="text/javascript" src="lib/jsonrpc-0.1.3.js"> </script>
 		<script type="text/javascript" src="lib/knockout-2.0.0.debug.js"> </script>
 		<script type="text/javascript" src="lib/signals.js"> </script>
-		<script type="text/javascript" src="js/app.js"> </script>
-		<script type="text/javascript" src="js/AppController.js"> </script>
-		<script type="text/javascript" src="js/TaskSummaryViewModel.js"> </script>
-		<script type="text/javascript" src="js/TaskDetailViewModel.js"> </script>
-		<script type="text/javascript" src="js/TreeNodeViewModel.js"> </script>
-		<script type="text/javascript" src="js/BottomScrollBinding.js"> </script>
+		<script type="text/javascript" src="lib/require.js"> </script>
 		<script type="text/javascript">
-			$(function () {
-				trackr.main('rpc');
+			require.config({ baseUrl: 'js' });
+
+			require(['AppController', 'bindingHandlers/bottomScroll'], function (AppController) {
+				ko.applyBindings(new AppController());
 			});
 		</script>
 	</head>
