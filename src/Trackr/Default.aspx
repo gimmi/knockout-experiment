@@ -13,7 +13,7 @@
 		<script type="text/javascript">
 			require.config({ baseUrl: 'js' });
 
-			require(['AppController', 'bindingHandlers/bottomScroll'], function (AppController) {
+			require(['AppController', 'bindingHandlers/bottomScroll'], function(AppController) {
 				ko.applyBindings(new AppController());
 			});
 		</script>
@@ -25,7 +25,21 @@
 				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
 			</div>
 			<div id="tasks" data-bind="bottomScroll: loadNextPage">
-				<ul class="tasks" data-bind="template: { name: 'task-template', foreach: tasks }"></ul>
+				<ul class="tasks" data-bind="template: { foreach: tasks }">
+					<li class="task">
+						<div class="tasksummary" data-bind="click: click">
+							<span data-bind="text: number"></span>
+							<span data-bind="text: title"></span>
+						</div>
+						<div data-bind="with: detail">
+							<div class="taskdetail">
+								<span data-bind="text: number"></span>
+								<span data-bind="text: title"></span>
+								<div data-bind="text: description"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 
@@ -35,22 +49,6 @@
 				<span data-bind="text: text, click: click"></span>
 				<div data-bind="if: expanded">
 					<ul class="nodes" data-bind="template: { name: 'node-template', foreach: children }"></ul>
-				</div>
-			</li>
-		</script>
-
-		<script type="text/html" id="task-template">
-			<li class="task">
-				<div class="tasksummary" data-bind="click: click">
-					<span data-bind="text: number"></span>
-					<span data-bind="text: title"></span>
-				</div>
-				<div data-bind="with: detail">
-					<div class="taskdetail">
-						<span data-bind="text: number"></span>
-						<span data-bind="text: title"></span>
-						<div data-bind="text: description"></div>
-					</div>
 				</div>
 			</li>
 		</script>
