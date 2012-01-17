@@ -13,7 +13,8 @@
 		<script type="text/javascript">
 			require.config({ baseUrl: 'js' });
 
-			require(['AppController', 'bindingHandlers/bottomScroll'], function(AppController) {
+			require(['AppController', 'BottomScrollBindingHandler'], function (AppController, BottomScrollBindingHandler) {
+				ko.bindingHandlers.bottomScroll = new BottomScrollBindingHandler();
 				ko.applyBindings(new AppController());
 			});
 		</script>

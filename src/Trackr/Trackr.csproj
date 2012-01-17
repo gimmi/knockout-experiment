@@ -53,7 +53,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="js\AppController.js" />
-    <Content Include="js\bindingHandlers\bottomScroll.js" />
+    <Content Include="js\BottomScrollBindingHandler.js" />
     <Content Include="js\server.js" />
     <Content Include="js\on.js" />
     <Content Include="js\TaskDetailViewModel.js" />
