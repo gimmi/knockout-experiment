@@ -9,15 +9,7 @@
 		<script type="text/javascript" src="lib/jsonrpc-0.1.3.js"> </script>
 		<script type="text/javascript" src="lib/knockout-2.0.0.debug.js"> </script>
 		<script type="text/javascript" src="lib/signals.js"> </script>
-		<script type="text/javascript" src="lib/require.js"> </script>
-		<script type="text/javascript">
-			require.config({ baseUrl: 'js' });
-
-			require(['AppController', 'BottomScrollBindingHandler'], function (AppController, BottomScrollBindingHandler) {
-				ko.bindingHandlers.bottomScroll = new BottomScrollBindingHandler();
-				ko.applyBindings(new AppController());
-			});
-		</script>
+		<script type="text/javascript" src="lib/require.js" data-main="js/main"> </script>
 	</head>
 	<body>
 		<div id="main">
