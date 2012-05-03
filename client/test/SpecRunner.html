@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<title>Jasmine Spec Runner</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0.rc3/jasmine.css">
+	<script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine.js"></script>
+	<script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine-html.js"></script>
+
+	<script type="text/javascript">
+		var require = {
+			baseUrl: '../js',
+			paths: {
+				'domReady': '../lib/domReady'
+			},
+			deps: [
+				'spec/AppControllerSpec.js',
+				'domReady!'
+			],
+			callback: function () {
+				var jasmineEnv = jasmine.getEnv();
+				var htmlReporter = new jasmine.HtmlReporter();
+				jasmineEnv.addReporter(htmlReporter);
+				jasmineEnv.specFilter = function(spec) {
+					return htmlReporter.specFilter(spec);
+				};
+				jasmineEnv.execute();
+			}
+		};
+	</script>
+	<script type="text/javascript" src="../lib/require.js"> </script>
+	<script type="text/javascript" src="spec/SpecHelper.js"></script>
+	<script type="text/javascript" src="spec/PlayerSpec.js"></script>
+
+	<!-- include spec files here... -->
+	<script type="text/javascript" src="js/Player.js"></script>
+	<script type="text/javascript" src="js/Song.js"></script>
+</head>
+<body>
+</body>
+</html>
