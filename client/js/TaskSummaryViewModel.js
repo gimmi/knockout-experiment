@@ -1,12 +1,12 @@
 define(['server', 'TaskDetailViewModel'], function (server, TaskDetailViewModel) {
-	var TaskSummaryViewModel = function (data) {
+	var ret = function (data) {
 		this.id = ko.observable(data.id);
 		this.number = ko.observable(data.number);
 		this.title = ko.observable(data.title);
 		this.detail = ko.observable();
 	};
 
-	TaskSummaryViewModel.prototype = {
+	ret.prototype = {
 		click: function () {
 			if (this.detail()) {
 				this.detail(null);
@@ -18,5 +18,5 @@ define(['server', 'TaskDetailViewModel'], function (server, TaskDetailViewModel)
 		}
 	};
 
-	return TaskSummaryViewModel;
+	return ret;
 });

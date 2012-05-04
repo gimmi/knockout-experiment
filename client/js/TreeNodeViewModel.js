@@ -1,12 +1,12 @@
 define(['on'], function (on) {
-	var TreeNodeViewModel = function (data) {
+	var ret = function (data) {
 		this.text = ko.observable(data.text);
 		this.expanded = ko.observable(false);
-		this.children = ko.observableArray(_(data.children).map(function (child) { return new TreeNodeViewModel(child); }, this));
+		this.children = ko.observableArray(_(data.children).map(function (child) { return new ret(child); }, this));
 		this.isLeaf = ko.computed(function () { return this.children().length === 0; }, this);
 	};
 
-	TreeNodeViewModel.prototype = {
+	ret.prototype = {
 		toggleExpanded: function () {
 			this.expanded(!this.expanded());
 		},
@@ -15,6 +15,6 @@ define(['on'], function (on) {
 		}
 	};
 
-	return TreeNodeViewModel;
+	return ret;
 });
 
