@@ -12,7 +12,7 @@ define(['server', 'TaskDetailViewModel'], function (server, TaskDetailViewModel)
 				this.detail(null);
 				return;
 			}
-			server.call('getTaskDetail', this.id(), function (data) {
+			server.getTaskDetail(this.id(), function (data) {
 				this.detail(new TaskDetailViewModel(data));
 			}, this);
 		}

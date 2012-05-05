@@ -10,7 +10,7 @@ define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
 
 	ret.prototype = {
 		loadTree: function () {
-			server.call('getTree', function (datas) {
+			server.getTree(function (datas) {
 				this.nodes(_(datas).map(function (data) {
 					return TreeNodeViewModel.create(data);
 				}));
@@ -29,7 +29,7 @@ define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
 		},
 
 		getTaskSummaries: function (skip, fn, scope) {
-			server.call('getTaskSummaries', skip, 50, this._nodeId, function (datas) {
+			server.getTaskSummaries(skip, 50, this._nodeId, function (datas) {
 				fn.call(scope, _(datas).map(function (data) {
 					return new TaskSummaryViewModel(data);
 				}, this));

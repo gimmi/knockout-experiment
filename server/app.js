@@ -26,7 +26,9 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
-app.post('/rpc', routes.rpc);
+app.get('/getTree', routes.getTree);
+app.get('/getTaskSummaries', routes.getTaskSummaries);
+app.get('/getTaskDetail', routes.getTaskDetail);
 
 app.listen(3000, function() {
 	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -1,7 +1,6 @@
-exports.rpc = function(req, res) {
-	var result;
-	if (req.body.method === 'getTree') {
-		result = [{
+module.exports = {
+	getTree: function(req, res) {
+		res.json([{
 			id: '1',
 			text: 'Node 1',
 			children: [{
@@ -12,11 +11,11 @@ exports.rpc = function(req, res) {
 					{ id: '1.1.2', text: 'Node 1.1.2', children: [] }
 				]
 			}, {
-				id: '1.2', 
+				id: '1.2',
 				text: 'Node 1.2',
 				children: []
 			}, {
-				id: '1.3', 
+				id: '1.3',
 				text: 'Node 1.3',
 				children: []
 			}]
@@ -28,27 +27,33 @@ exports.rpc = function(req, res) {
 				{ id: '2.2', text: 'Node 2.2', children: [] },
 				{ id: '2.3', text: 'Node 2.3', children: [] }
 			]
-		}];
-	} else if (req.body.method === 'getTaskSummaries') {
-		result = [];
-		for (var i = req.body.params[0]; i < req.body.params[0] + req.body.params[1]; i++) {
+		}]);
+	},
+
+	getTaskSummaries: function(req, res) {
+		var start = Number(req.param('start', 0)),
+			limit = Number(req.param('limit', 50)),
+			text = req.param('limit', 'txt'),
+			result = [];
+
+		for (var i = start; i < start + limit; i++) {
 			result.push({
-				id: '' + i, 
-				number: i, 
-				title: req.body.params[2] + ", task " + i
+				id: '' + i,
+				number: i,
+				title: text + ", task " + i
 			});
 		}
-	} else if (req.body.method === 'getTaskDetail') {
-		result = {
-			id: req.body.params[0],
+		res.json(result);
+	},
+
+	getTaskDetail: function(req, res) {
+		var id = req.param('id', '');
+
+		res.json({
+			id: id,
 			number: 1,
-			title: "Task " + req.body.params[0],
-			description: "Task " + req.body.params[0] + " description"
-		};
+			title: "Task " + id,
+			description: "Task " + id + " description"
+		});
 	}
-	res.json({
-		jsonrpc: req.body.jsonrpc,
-		id: req.body.id,
-		result: result
-	});
 };

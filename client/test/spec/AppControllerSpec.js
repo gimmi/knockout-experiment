@@ -8,14 +8,14 @@ require(['AppController', 'TreeNodeViewModel', 'server'], function (AppControlle
 		});
 
 		it("should load tree", function () {
-			spyOn(server, 'call').andCallFake(function (m, cb, scope) {
+			spyOn(server, 'getTree').andCallFake(function (cb, scope) {
 				cb.call(scope, ['tnd']);
 			});
 			spyOn(TreeNodeViewModel, 'create');
 
 			target.loadTree();
 
-			expect(server.call).toHaveBeenCalledWith('getTree', jasmine.any(Function), target);
+			expect(server.getTree).toHaveBeenCalledWith(jasmine.any(Function), target);
 			expect(TreeNodeViewModel.create).toHaveBeenCalledWith('tnd');
 		});
 	});
