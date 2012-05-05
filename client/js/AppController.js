@@ -1,20 +1,19 @@
-define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'], function (on, server, TreeNodeViewModel, TaskSummaryViewModel) {
+define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
+	function (on, server, TreeNodeViewModel, TaskSummaryViewModel) {
 	var ret = function () {
 		this.nodes = ko.observableArray();
 		this.tasks = ko.observableArray();
 		this._nodeId = null;
 
 		on.nodeSelected.add(this.onNodeSelected, this);
-
-		this.loadTree();
 	};
 
 	ret.prototype = {
 		loadTree: function () {
 			server.call('getTree', function (datas) {
 				this.nodes(_(datas).map(function (data) {
-					return new TreeNodeViewModel(data);
-				}, this));
+					return TreeNodeViewModel.create(data);
+				}));
 			}, this);
 		},
 

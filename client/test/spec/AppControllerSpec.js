@@ -1,10 +1,22 @@
-require([], function () {
-	describe("AppController", function() {
-	  beforeEach(function() {
-	  });
+require(['AppController', 'TreeNodeViewModel', 'server'], function (AppController, TreeNodeViewModel, server) {
 
-	  it("false should be true", function() {
-		expect(false).toBe(false);
-	  });
+	describe("AppController", function () {
+		var target;
+
+		beforeEach(function () {
+			target = new AppController();
+		});
+
+		it("should load tree", function () {
+			spyOn(server, 'call').andCallFake(function (m, cb, scope) {
+				cb.call(scope, ['tnd']);
+			});
+			spyOn(TreeNodeViewModel, 'create');
+
+			target.loadTree();
+
+			expect(server.call).toHaveBeenCalledWith('getTree', jasmine.any(Function), target);
+			expect(TreeNodeViewModel.create).toHaveBeenCalledWith('tnd');
+		});
 	});
 });

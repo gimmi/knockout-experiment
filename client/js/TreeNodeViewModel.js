@@ -1,12 +1,16 @@
 define(['on'], function (on) {
-	var ret = function (data) {
+	var Class = function (data) {
 		this.text = ko.observable(data.text);
 		this.expanded = ko.observable(false);
-		this.children = ko.observableArray(_(data.children).map(function (child) { return new ret(child); }, this));
+		this.children = ko.observableArray(_(data.children).map(function (child) { return new Class(child); }, this));
 		this.isLeaf = ko.computed(function () { return this.children().length === 0; }, this);
 	};
 
-	ret.prototype = {
+	Class.create = function (data) {
+		return new Class(data);
+	};
+
+	Class.prototype = {
 		toggleExpanded: function () {
 			this.expanded(!this.expanded());
 		},
@@ -15,6 +19,6 @@ define(['on'], function (on) {
 		}
 	};
 
-	return ret;
+	return Class;
 });
 
