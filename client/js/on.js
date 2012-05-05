@@ -1,5 +1,3 @@
-define(function () {
-	return {
-		nodeSelected: new signals.Signal()
-	};
+define({
+	nodeSelected:new signals.Signal()
 });
