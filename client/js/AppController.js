@@ -1,5 +1,4 @@
-define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
-	function (on, server, TreeNodeViewModel, TaskSummaryViewModel) {
+define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'], function (on, server, TreeNodeViewModel, TaskSummaryViewModel) {
 	var ret = function () {
 		this.nodes = ko.observableArray();
 		this.tasks = ko.observableArray();
@@ -9,7 +8,7 @@ define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
 	};
 
 	ret.prototype = {
-		loadTree: function () {
+		loadTree:function () {
 			server.getTree(function (datas) {
 				this.nodes(_(datas).map(function (data) {
 					return TreeNodeViewModel.create(data);
@@ -17,18 +16,22 @@ define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
 			}, this);
 		},
 
-		onNodeSelected: function (text) {
+		onNodeSelected:function (text) {
 			this._nodeId = text;
-			this.getTaskSummaries(0, function (ret) { this.tasks(ret); }, this);
-		},
-
-		loadNextPage: function () {
-			this.getTaskSummaries(this.tasks().length, function (tasks) {
-				_(tasks).each(function (task) { this.tasks.push(task); }, this);
+			this.getTaskSummaries(0, function (ret) {
+				this.tasks(ret);
 			}, this);
 		},
 
-		getTaskSummaries: function (skip, fn, scope) {
+		loadNextPage:function () {
+			this.getTaskSummaries(this.tasks().length, function (tasks) {
+				_(tasks).each(function (task) {
+					this.tasks.push(task);
+				}, this);
+			}, this);
+		},
+
+		getTaskSummaries:function (skip, fn, scope) {
 			server.getTaskSummaries(skip, 50, this._nodeId, function (datas) {
 				fn.call(scope, _(datas).map(function (data) {
 					return new TaskSummaryViewModel(data);
@@ -36,6 +39,6 @@ define(['on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'],
 			}, this);
 		}
 	};
-	
+
 	return ret;
 });
