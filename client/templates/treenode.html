@@ -1,0 +1,7 @@
+<li class="node">
+	<span data-bind="css: { leaf: isLeaf, expanded: expanded }, click: toggleExpanded">#</span>
+	<span data-bind="text: text, click: click"></span>
+	<div data-bind="if: expanded">
+		<ul class="nodes" data-bind="template: { name: 'treenode', foreach: children }"></ul>
+	</div>
+</li>

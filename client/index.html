@@ -12,7 +12,8 @@
 			window.require = {
 				baseUrl: 'js',
 				paths: {
-					'domReady': '/lib/domReady'
+					'domReady': '/lib/domReady',
+					'text': '/lib/text'
 				},
 				deps: ['main']
 			};
@@ -23,7 +24,7 @@
 		<div id="main">
 			<div id="top">Header</div>
 			<div id="nodes">
-				<ul class="nodes" data-bind="template: { name: 'node-template', foreach: nodes }"></ul>
+				<ul class="nodes" data-bind="template: { name: 'treenode', foreach: nodes }"></ul>
 			</div>
 			<div id="tasks" data-bind="bottomScroll: loadNextPage">
 				<ul class="tasks" data-bind="template: { foreach: tasks }">
@@ -43,15 +44,5 @@
 				</ul>
 			</div>
 		</div>
-
-		<script type="text/html" id="node-template">
-			<li class="node">
-				<span data-bind="css: { leaf: isLeaf, expanded: expanded }, click: toggleExpanded">#</span>
-				<span data-bind="text: text, click: click"></span>
-				<div data-bind="if: expanded">
-					<ul class="nodes" data-bind="template: { name: 'node-template', foreach: children }"></ul>
-				</div>
-			</li>
-		</script>
 	</body>
 </html>
