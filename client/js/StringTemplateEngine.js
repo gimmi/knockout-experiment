@@ -1,4 +1,4 @@
-define(['StringTemplateSource'], function (StringTemplateSource) {
+define(['knockout', 'StringTemplateSource'], function (ko, StringTemplateSource) {
 	var Class = function () {
 	};
 

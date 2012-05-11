@@ -1,4 +1,4 @@
-define(['server', 'TaskDetailViewModel'], function (server, TaskDetailViewModel) {
+define(['knockout', 'server', 'TaskDetailViewModel'], function (ko, server, TaskDetailViewModel) {
 	var ret = function (data) {
 		this.id = ko.observable(data.id);
 		this.number = ko.observable(data.number);

@@ -1,4 +1,4 @@
-define(['on'], function (on) {
+define(['knockout', 'on'], function (ko, on) {
 	var Class = function (data) {
 		this.text = ko.observable(data.text);
 		this.expanded = ko.observable(false);
