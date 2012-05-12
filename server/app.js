@@ -26,6 +26,7 @@ app.configure('production', function() {
 	app.use(express.errorHandler());
 });
 
+app.get('/tasks', routes.tasks);
 app.get('/getTree', routes.getTree);
 app.get('/getTaskSummaries', routes.getTaskSummaries);
 app.get('/getTaskDetail', routes.getTaskDetail);

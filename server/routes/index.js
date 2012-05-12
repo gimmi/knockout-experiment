@@ -1,4 +1,17 @@
+var _ = require('underscore');
+
 module.exports = {
+	tasks: function (req, res) {
+		var filter = req.param('filter', ''),
+			tasks = [
+			{ id: 1, title: 'task 1' },
+			{ id: 2, title: 'task 2' }
+		];
+		tasks = _(tasks).filter(function (task) {
+			return task.title.indexOf(filter) != -1;
+		});
+		res.json(tasks);
+	},
 	getTree: function(req, res) {
 		res.json([{
 			id: '1',
