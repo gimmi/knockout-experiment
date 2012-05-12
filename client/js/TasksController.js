@@ -1,6 +1,7 @@
 define(function (require) {
 	var ko = require('knockout'),
-		_ = require('underscore');
+		_ = require('underscore'),
+		server = require('server');
 
 	var Class = function () {
 		this.filter = ko.observable('');
@@ -16,14 +17,11 @@ define(function (require) {
 
 	Class.prototype = {
 		_loadTasks: function () {
-			var tasks = [
-				{ id: 1, title: 'task 1' },
-				{ id: 2, title: 'task 2' }
-			];
-			tasks = _(tasks).filter(function (task) {
-				return task.title.indexOf(this.filter()) != -1;
-			}, this);
-			this.tasks(tasks);
+			var me = this;
+
+			server.getTasks(me.filter()).then(function (tasks) {
+				me.tasks(tasks);
+			});
 		}
 	};
 
