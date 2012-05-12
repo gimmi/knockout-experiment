@@ -1,4 +1,11 @@
-require(['knockout', 'AppController', 'BottomScrollBindingHandler', 'StringTemplateEngine', 'crossroads', 'hasher', 'domReady!'], function (ko, AppController, BottomScrollBindingHandler, StringTemplateEngine, crossroads, hasher) {
+define(function (require) {
+	var ko = require('knockout'),
+		AppController = require('AppController'),
+		BottomScrollBindingHandler = require('BottomScrollBindingHandler'),
+		StringTemplateEngine = require('StringTemplateEngine'),
+		crossroads = require('crossroads'),
+		hasher = require('hasher');
+
 	ko.bindingHandlers.bottomScroll = new BottomScrollBindingHandler();
 
 	ko.setTemplateEngine(new StringTemplateEngine());
