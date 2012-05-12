@@ -1,4 +1,10 @@
-define(['knockout', 'on', 'server', 'TreeNodeViewModel', 'TaskSummaryViewModel'], function (ko, on, server, TreeNodeViewModel, TaskSummaryViewModel) {
+define(function (require) {
+	var ko = require('knockout'),
+		on = require('on'),
+		server = require('server'),
+		TreeNodeViewModel = require('TreeNodeViewModel'),
+		TaskSummaryViewModel = require('TaskSummaryViewModel');
+
 	var ret = function () {
 		this.nodes = ko.observableArray();
 		this.tasks = ko.observableArray();
