@@ -1,50 +1,44 @@
 ﻿<!doctype html>
 <html>
-	<head>
-		<title>Trackr</title>
-		<link type="text/css" rel="stylesheet" href="css/reset.css" />
-		<link type="text/css" rel="stylesheet" href="css/style.css" />
-		<script type="text/javascript" src="lib/underscore.js" > </script>
-		<script type="text/javascript" src="lib/jquery-1.7.1.js"> </script>
-		<script type="text/javascript">
-			window.require = {
-				baseUrl: 'js',
-				paths: {
-					'domReady': '/lib/domReady',
-					'text': '/lib/text',
-					'knockout': '/lib/knockout-2.1.0.debug',
-					'signals': '/lib/signals',
-					'hasher': '/lib/hasher',
-					'crossroads': '/lib/crossroads'
-				},
-				deps: ['domReady!', 'main']
-			};
-		</script>
-		<script type="text/javascript" src="lib/require.js"> </script>
-	</head>
-	<body>
-		<div id="main">
-			<div id="top">Header</div>
-			<div id="nodes">
-				<ul class="nodes" data-bind="template: { name: 'treenode', foreach: nodes }"></ul>
-			</div>
-			<div id="tasks">
-				<ul class="tasks" data-bind="template: { foreach: tasks }">
-					<li class="task">
-						<div class="tasksummary" data-bind="click: click">
-							<span data-bind="text: number"></span>
-							<span data-bind="text: title"></span>
-						</div>
-						<div data-bind="with: detail">
-							<div class="taskdetail">
-								<span data-bind="text: number"></span>
-								<span data-bind="text: title"></span>
-								<div data-bind="text: description"></div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</body>
+<head>
+	<title>Trackr</title>
+	<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
+	<script type="text/javascript">
+		window.require = {
+			baseUrl: 'js',
+			paths: {
+				'domReady': '/lib/domReady',
+				'text': '/lib/text',
+				'knockout': '/lib/knockout-2.1.0.debug',
+				'signals': '/lib/signals',
+				'hasher': '/lib/hasher',
+				'crossroads': '/lib/crossroads',
+				'underscore': '/lib/underscore'
+			},
+			deps: ['domReady!', 'main']
+		};
+	</script>
+	<script type="text/javascript" src="lib/require.js"></script>
+</head>
+<body>
+<div data-bind="with: tasksController">
+	<input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'">
+	<table>
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+		</tr>
+		</thead>
+		<tbody data-bind="foreach: tasks">
+		<tr>
+			<td data-bind="text: id"></td>
+			<td data-bind="text: title"></td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+</body>
 </html>

@@ -6,6 +6,5 @@ define(function (require) {
 	ko.setTemplateEngine(new StringTemplateEngine());
 
 	var appController = new AppController();
-	appController.loadTree();
 	ko.applyBindings(appController);
 });
