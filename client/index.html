@@ -2,8 +2,6 @@
 <html>
 <head>
 	<title>Trackr</title>
-	<link type="text/css" rel="stylesheet" href="css/reset.css"/>
-	<link type="text/css" rel="stylesheet" href="css/style.css"/>
 	<script type="text/javascript" src="lib/jquery-1.7.1.js"></script>
 	<script type="text/javascript">
 		window.require = {
@@ -25,20 +23,11 @@
 <body>
 <div data-bind="with: tasksController">
 	<input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'">
-	<table>
-		<thead>
-		<tr>
-			<th>ID</th>
-			<th>Title</th>
-		</tr>
-		</thead>
-		<tbody data-bind="foreach: tasks">
-		<tr>
-			<td data-bind="text: id"></td>
-			<td data-bind="text: title"></td>
-		</tr>
-		</tbody>
-	</table>
+	<ul  data-bind="foreach: tasks">
+		<li>
+			<a href="#" data-bind="text: title"></a>
+		</li>
+	</ul>
 </div>
 </body>
 </html>
