@@ -2,7 +2,6 @@ define(function (require) {
 	var ko = require('knockout'),
 		on = require('on'),
 		TasksController = require('TasksController'),
-		TaskController = require('TaskController'),
 		Task = require('Task');
 
 	var Class = function () {
