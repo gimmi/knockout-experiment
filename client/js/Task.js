@@ -13,5 +13,11 @@ define(function (require) {
 		});
 	};
 
+	Class.prototype = {
+		update: function () {
+			console.log('update');
+		}
+	};
+
 	return Class;
 });

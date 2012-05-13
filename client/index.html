@@ -32,8 +32,11 @@
 <div data-bind="with: taskController">
 	<ul>
 		<li>Id: <span data-bind="text: id"></span></li>
-		<li>Title: <span data-bind="text: title"></span></li>
+		<li>Title: <input type="text" data-bind="value: title"></li>
 	</ul>
+	<p>
+		<button data-bind='click: update'>Update</button>
+	</p>
 </div>
 </body>
 </html>
