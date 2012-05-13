@@ -12,6 +12,11 @@ module.exports = {
 		});
 		res.json(tasks);
 	},
+	task: function (req, res) {
+		var id = req.param('id', null);
+
+		res.json({ id: id, title: 'Title ' + id });
+	},
 	getTree: function(req, res) {
 		res.json([{
 			id: '1',

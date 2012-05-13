@@ -2,7 +2,8 @@ define(function (require) {
 	var ko = require('knockout'),
 		on = require('on'),
 		TasksController = require('TasksController'),
-		TaskController = require('TaskController');
+		TaskController = require('TaskController'),
+		Task = require('Task');
 
 	var Class = function () {
 		this.tasksController = new TasksController();
@@ -13,7 +14,11 @@ define(function (require) {
 
 	Class.prototype = {
 		_taskSelected: function (id) {
-			this.taskController(new TaskController());
+			var me = this;
+
+			Task.get(id).then(function (task) {
+				me.taskController(task);
+			});
 		}
 	};
 

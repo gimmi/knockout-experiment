@@ -27,6 +27,7 @@ app.configure('production', function() {
 });
 
 app.get('/tasks', routes.tasks);
+app.get('/task', routes.task);
 app.get('/getTree', routes.getTree);
 app.get('/getTaskSummaries', routes.getTaskSummaries);
 app.get('/getTaskDetail', routes.getTaskDetail);
