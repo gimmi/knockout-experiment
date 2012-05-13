@@ -1,7 +1,8 @@
 define(function (require) {
 	var ko = require('knockout'),
 		_ = require('underscore'),
-		server = require('server');
+		server = require('server'),
+		TaskInfo = require('TaskInfo');
 
 	var Class = function () {
 		this.filter = ko.observable('');
@@ -20,6 +21,9 @@ define(function (require) {
 			var me = this;
 
 			server.getTasks(me.filter()).then(function (tasks) {
+				tasks = _(tasks).map(function (task) {
+					return new TaskInfo(task);
+				});
 				me.tasks(tasks);
 			});
 		}

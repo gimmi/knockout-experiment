@@ -25,7 +25,7 @@
 	<input type="text" data-bind="value: filter, valueUpdate: 'afterkeydown'">
 	<ul  data-bind="foreach: tasks">
 		<li>
-			<a href="#" data-bind="text: title"></a>
+			<a href="#" data-bind="text: title, click: click"></a>
 		</li>
 	</ul>
 </div>
