@@ -20,10 +20,7 @@ define(function (require) {
 		_loadTasks: function () {
 			var me = this;
 
-			server.getTasks(me.filter()).then(function (tasks) {
-				tasks = _(tasks).map(function (task) {
-					return new TaskInfo(task);
-				});
+			TaskInfo.fetch(me.filter()).then(function (tasks) {
 				me.tasks(tasks);
 			});
 		}
