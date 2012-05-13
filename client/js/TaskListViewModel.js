@@ -1,7 +1,6 @@
 define(function (require) {
 	var ko = require('knockout'),
 		_ = require('underscore'),
-		server = require('server'),
 		TaskInfo = require('TaskInfo');
 
 	var Class = function () {
