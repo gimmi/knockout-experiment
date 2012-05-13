@@ -1,11 +1,11 @@
 define(function (require) {
 	var ko = require('knockout'),
 		on = require('on'),
-		TasksViewModel = require('TasksViewModel'),
+		TaskListViewModel = require('TaskListViewModel'),
 		Task = require('Task');
 
 	var Class = function () {
-		this.tasks = new TasksViewModel();
+		this.tasks = new TaskListViewModel();
 		this.taskController = ko.observable(null);
 
 		on.taskSelected.add(this._taskSelected, this);
