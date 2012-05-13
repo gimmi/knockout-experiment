@@ -1,5 +1,7 @@
-define(['signals'], function (signals) {
+define(function (require) {
+	var signals = require('signals');
+
 	return {
-		nodeSelected: new signals.Signal()
+		taskSelected: new signals.Signal()
 	};
 });

@@ -1,5 +1,6 @@
 define(function (require) {
-	var ko = require('knockout');
+	var ko = require('knockout'),
+		on = require('on');
 
 	var Class = function (json) {
 		this.id = ko.observable(json.id);
@@ -7,7 +8,7 @@ define(function (require) {
 	};
 	Class.prototype = {
 		click: function () {
-			console.log('selected' + this.id());
+			on.taskSelected.dispatch(this.id());
 		}
 	};
 	return Class;
